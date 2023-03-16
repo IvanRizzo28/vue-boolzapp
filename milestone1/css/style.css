@@ -166,10 +166,33 @@ main header, footer{
     flex-shrink: 0;
 }
 
-section{
+#chat{
     flex-grow: 1;
     overflow-y: auto;
     padding: 20px;
+}
+
+#chat > div{
+    margin-bottom: 20px;
+}
+
+.mess{
+    padding: 10px 40px 10px 15px;
+    border-radius: 5px;
+    position: relative;
+    background-color: #fff;
+    max-width: 300px;
+}
+
+.mandati{
+    background-color: #d5f9ba;
+    margin-left: auto;
+}
+
+.mess-orario{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
 }
 
 footer{

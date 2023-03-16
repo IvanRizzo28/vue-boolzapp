@@ -30,6 +30,7 @@
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
             </header>
+
             <div class="notifiche flex ai-center">
                 <div class="cerchio mr-2">
                     <i class="fa-solid fa-bell-slash"></i>
@@ -39,6 +40,7 @@
                     <span class="ultimo-accesso">Attiva notifiche desktop</span>
                 </div>
             </div>
+
             <div class="lista-conversazioni flex flex-column">
                 <div class="cerca flex">
                     <div>
@@ -47,28 +49,19 @@
                     <input type="text" placeholder="Cerca nei tuoi contatti">
                 </div>
                 <div class="content">
-                    <div class="flex  jc-between content-chat active">
+                    <div class="flex jc-between content-chat active" v-for="(element,index) in conversazioni">
                         <div class="flex ai-center">
-                            <img src="img/avatar_1.jpg" alt="avatar_1" class="avatar">
+                            <img :src="contatti[element.idContatto].img" :alt="contatti[element.idContatto].nome" class="avatar">
                             <div>
-                                <span class="nome">Michele</span>
-                                <span class="ultimo-accesso">Ultimo accesso: 12:00</span>
+                                <span class="nome">{{contatti[element.idContatto].nome}} {{contatti[element.idContatto].cognome}}</span>
+                                <span class="ultimo-accesso">Ultimo messaggio inviato</span>
                             </div>
                         </div>
-                        <span class="orario">12:00</span>
-                    </div>
-                    <div class="flex  jc-between content-chat">
-                        <div class="flex ai-center">
-                            <img src="img/avatar_1.jpg" alt="avatar_1" class="avatar">
-                            <div>
-                                <span class="nome">Michele</span>
-                                <span class="ultimo-accesso">Ultimo accesso: 12:00</span>
-                            </div>
-                        </div>
-                        <span class="orario">12:00</span>
+                        <span class="orario">{{getOrarioUltimoMessaggio(index)}}</span>
                     </div>
                 </div>
             </div>
+
         </aside>
         <main class="flex flex-column">
             <header class="flex jc-between ai-center">
@@ -85,16 +78,26 @@
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
             </header>
+            <!--chat-->
             <section id="chat">
+                <div>
+                    <div class="mess mandati">Hai portato a spasso il cane? sjsjlsjsljsljslsjlsjsljsbbiddbhdbddidbdi<span class="orario mess-orario">12:00</span></div>
+                </div>
+                <div>
+                    <div class="mess">Ok<span class="orario mess-orario">12:00</span></div>
+                </div>
             </section>
+            <!--/chat-->
+            <!--parte per mandare un messaggio-->
             <footer class="flex jc-between ai-center">
                 <i class="fa-regular fa-face-smile"></i>
                 <input type="text" placeholder="Scrivi un messaggio">
                 <i class="fa-solid fa-microphone"></i>
             </footer>
+            <!--/parte per mandare un messaggio-->
         </main>
     </div>
-    <!--app-->
+    <!--/app-->
 
     <!--vuejs-->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
