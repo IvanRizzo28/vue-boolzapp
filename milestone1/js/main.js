@@ -12,7 +12,7 @@ createApp({
             },
             {
                 nome: 'Giovanni',
-                cognome: '',
+                cognome: ' ',
                 img: `img/avatar_2.jpg`
             }
         ],
