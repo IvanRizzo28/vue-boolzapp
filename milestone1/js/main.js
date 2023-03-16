@@ -1,6 +1,5 @@
 const {createApp}=Vue;
-const arr=[];
-arr.length
+
 createApp({
     data() {
       return {
