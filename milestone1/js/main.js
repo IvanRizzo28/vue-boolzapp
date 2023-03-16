@@ -1,6 +1,5 @@
 const {createApp}=Vue;
-const arr=[];
-arr.length
+
 createApp({
     data() {
       return {
@@ -12,7 +11,7 @@ createApp({
             },
             {
                 nome: 'Giovanni',
-                cognome: ' ',
+                cognome: '',
                 img: `img/avatar_2.jpg`
             }
         ],
