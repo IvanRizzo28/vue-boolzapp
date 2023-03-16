@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+    <!--fontawesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--css-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!--sfondo-->
+    <div class="bg1"></div>
+    <div class="bg2"></div>
+    <!--/sfondo-->
+
+    <!--app-->
+    <div id="app" class="flex">
+        <aside class="flex flex-column">
+            <header class="flex jc-between ai-center">
+                <div class="flex ai-center">
+                    <img src="img/avatar_1.jpg" alt="avatar_1" class="avatar">
+                    <span class="nome">Ivan</span>
+                </div>
+                <div class="flex ai-center">
+                    <i class="fa-solid fa-circle-notch mr-2"></i>
+                    <i class="fa-solid fa-message mr-2"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+            </header>
+            <div class="notifiche flex ai-center">
+                <div class="cerchio mr-2">
+                    <i class="fa-solid fa-bell-slash"></i>
+                </div>
+                <div>
+                    <span class="notifiche-avviso">Ricevi notifiche di nuovi messaggi</span>
+                    <span class="ultimo-accesso">Attiva notifiche desktop</span>
+                </div>
+            </div>
+            <div class="lista-conversazioni flex flex-column">
+                <div class="cerca flex">
+                    <div>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <input type="text" placeholder="Cerca nei tuoi contatti">
+                </div>
+                <div class="content">
+                    <div class="flex  jc-between content-chat active">
+                        <div class="flex ai-center">
+                            <img src="img/avatar_1.jpg" alt="avatar_1" class="avatar">
+                            <div>
+                                <span class="nome">Michele</span>
+                                <span class="ultimo-accesso">Ultimo accesso: 12:00</span>
+                            </div>
+                        </div>
+                        <span class="orario">12:00</span>
+                    </div>
+                    <div class="flex  jc-between content-chat">
+                        <div class="flex ai-center">
+                            <img src="img/avatar_1.jpg" alt="avatar_1" class="avatar">
+                            <div>
+                                <span class="nome">Michele</span>
+                                <span class="ultimo-accesso">Ultimo accesso: 12:00</span>
+                            </div>
+                        </div>
+                        <span class="orario">12:00</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main class="flex flex-column">
+            <header class="flex jc-between ai-center">
+                <div class="flex ai-center">
+                    <img src="img/avatar_1.jpg" alt="avatar_1" class="avatar">
+                    <div>
+                        <span class="nome">Michele</span>
+                        <span class="ultimo-accesso">Ultimo accesso: 12:00</span>
+                    </div>
+                </div>
+                <div class="flex ai-center">
+                    <i class="fa-solid fa-magnifying-glass mr-2"></i>
+                    <i class="fa-solid fa-link mr-2"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+            </header>
+            <section id="chat">
+            </section>
+            <footer class="flex jc-between ai-center">
+                <i class="fa-regular fa-face-smile"></i>
+                <input type="text" placeholder="Scrivi un messaggio">
+                <i class="fa-solid fa-microphone"></i>
+            </footer>
+        </main>
+    </div>
+    <!--app-->
+
+    <!--vuejs-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--js-->
+    <script src="js/main.js"></script>
+</body>
+</html>
