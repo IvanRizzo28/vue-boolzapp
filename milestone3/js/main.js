@@ -48,7 +48,7 @@ createApp({
                 messaggi:[
                     {
                         testo: 'Ok',
-                        data: '10/01/2020 16:15:22',
+                        data: '10/01/2023 16:15:22',
                         sent: true
                     }
                 ]
@@ -112,9 +112,7 @@ createApp({
             if (this.idActive > -1){
                 for (let i=0;i<this.conversazioni.length;i++)
                 {
-                    if (this.conversazioni[i].id === this.idActive){
-                        return this.conversazioni[i];
-                    }
+                    if (this.conversazioni[i].id === this.idActive) return this.conversazioni[i];
                 }
             }
         },
@@ -132,24 +130,29 @@ createApp({
         },
         inviaMessaggio(){
             if (this.messaggioTemporaneo.trim() != ''){
+                const mese=Number(this.dataOdierna.getMonth() + 1);
+                const anno=this.dataOdierna.getFullYear();
+                const giorno=this.dataOdierna.getDate();
+                const ora=this.dataOdierna.getHours(); if (ora.length === 1) ora="0"+ora;
+                const minuti=this.dataOdierna.getMinutes();
+                let secondi=this.dataOdierna.getSeconds();
+                let orario=`${giorno}/${mese}/${anno} ${ora}:${minuti}:${secondi}`;
                 this.getConversazioniByIdActive().messaggi.push({
                     testo: this.messaggioTemporaneo,
-                    data: /*this.getTimestamp(),*/'',
+                    data: orario,
                     sent: true
                 });
                 this.messaggioTemporaneo='';
+                secondi=this.dataOdierna.getSeconds();
+                orario=`${giorno}/${mese}/${anno} ${ora}:${minuti}:${secondi}`;
                 setTimeout(()=>{
                     this.getConversazioniByIdActive().messaggi.push({
                         testo: 'Ok',
-                        data: /*this.getTimestamp(),*/'',
+                        data: orario,
                         sent: false
                     });
                 },1000);
             }
-        },
-        getTimestamp(){
-           /* data.getDate()+"/"+Number(data.getMonth()+1)+"/"+data.getFullYear();
-            return data;*/
         }
     }
   }).mount('#app')
