@@ -12,4 +12,4 @@ Nella parte di sinistra del sito dove ci sono le conversazioni, nella parte relt
 - Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all’interno del pannello della conversazione
 - Click sul contatto mostra la conversazione del contatto cliccato
 
-# Nella milestone1 è compresa pure la milestone3
+# Nella milestone1 è compresa pure la milestone4
