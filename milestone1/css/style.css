@@ -62,10 +62,14 @@ input{
     padding: 10px;
 }
 /*
-spaziatura
+spaziatura dimensioni
 */
 .mr-2{
     margin-right: 15px;
+}
+
+.h-100{
+    height: 100%;
 }
 /*
 app
@@ -146,6 +150,7 @@ aside header{
 
 .content-chat{
     padding: 10px 15px;
+    cursor: pointer;
 }
 
 .content-chat.active{
@@ -159,7 +164,7 @@ aside header{
 /*chat*/
 main{
     flex-grow: 1;
-    background-image: url("../img/mine.jpg");
+    background-image: url("../../img/mine.jpg");
 }
 
 main header, footer{
