@@ -77,7 +77,6 @@ createApp({
             const data=this.conversazioni[i].messaggi[this.conversazioni[i].messaggi.length-1].data;
             const tmp=data.split(" ");
             const data2=tmp[0].split("/");
-            //console.log(this.dataOdierna.toISOString());
             if (Number(data2[2]) === Number(this.dataOdierna.getFullYear())){
                 if (Number(data2[1]) === Number(this.dataOdierna.getMonth()) + 1){
                     if (Number(data2[0]) === Number(this.dataOdierna.getDate())) return tmp[1].substring(0,tmp[1].length-3);
@@ -135,8 +134,8 @@ createApp({
                 const anno=this.dataOdierna.getFullYear();
                 const giorno=this.dataOdierna.getDate();
                 //Inserisco uno zero prima dei parametri per avere sempre la stessa lugnhezza dellla stringa
-                const ora=this.dataOdierna.getHours(); if (ora<10) ora="0"+ora.toString();
-                const minuti=this.dataOdierna.getMinutes(); if(minuti<10) minuti="0"+minuti.toString();
+                let ora=this.dataOdierna.getHours(); if (ora<10) ora="0"+ora.toString();
+                let minuti=this.dataOdierna.getMinutes(); if(minuti<10) minuti="0"+minuti.toString();
                 let secondi=this.dataOdierna.getSeconds(); if (secondi<10) secondi="0"+secondi.toString();
                 //-------------
                 let orario=`${giorno}/${mese}/${anno} ${ora}:${minuti}:${secondi}`;

@@ -60,7 +60,7 @@
                             <img :src="contatti[element.idContatto].img" :alt="contatti[element.idContatto].nome" class="avatar">
                             <div>
                                 <span class="nome">{{contatti[element.idContatto].nome}} {{contatti[element.idContatto].cognome}}</span>
-                                <span class="ultimo-accesso">Ultimo messaggio inviato</span>
+                                <span class="ultimo-accesso">{{element.messaggi[element.messaggi.length-1].testo}}</span>
                             </div>
                         </div>
                         <span class="orario">{{getOrarioUltimoMessaggio(index)}}</span>
