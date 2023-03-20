@@ -3,6 +3,7 @@ const {createApp}=Vue;
 createApp({
     data() {
       return {
+        dataOdierna: new Date(),
         cerca: '',
         messaggioTemporaneo: '',
         idActive: -1,
@@ -76,11 +77,10 @@ createApp({
             const data=this.conversazioni[i].messaggi[this.conversazioni[i].messaggi.length-1].data;
             const tmp=data.split(" ");
             const data2=tmp[0].split("/");
-            const dataOdierna=new Date();
-            console.log(dataOdierna);
-            if (Number(data2[2]) === Number(dataOdierna.getFullYear())){
-                if (Number(data2[1]) === Number(dataOdierna.getMonth()) + 1){
-                    if (Number(data2[0]) === Number(dataOdierna.getDate())) return tmp[1].substring(0,tmp[1].length-3);
+            //console.log(this.dataOdierna.toISOString());
+            if (Number(data2[2]) === Number(this.dataOdierna.getFullYear())){
+                if (Number(data2[1]) === Number(this.dataOdierna.getMonth()) + 1){
+                    if (Number(data2[0]) === Number(this.dataOdierna.getDate())) return tmp[1].substring(0,tmp[1].length-3);
                 }
                 return data2[0]+"/"+data2[1];
             }
@@ -130,26 +130,28 @@ createApp({
         },
         inviaMessaggio(){
             if (this.messaggioTemporaneo.trim() != ''){
-               /* const mese=Number(this.dataOdierna.getMonth() + 1);
+                this.dataOdierna=new Date();
+                const mese=Number(this.dataOdierna.getMonth() + 1);
                 const anno=this.dataOdierna.getFullYear();
                 const giorno=this.dataOdierna.getDate();
-                const ora=this.dataOdierna.getHours(); if (ora.length === 1) ora="0"+ora;
-                const minuti=this.dataOdierna.getMinutes();
-                let secondi=this.dataOdierna.getSeconds();
-                console.log(secondi);
-                let orario=`${giorno}/${mese}/${anno} ${ora}:${minuti}:${secondi}`;*/
+                //Inserisco uno zero prima dei parametri per avere sempre la stessa lugnhezza dellla stringa
+                const ora=this.dataOdierna.getHours(); if (ora<10) ora="0"+ora.toString();
+                const minuti=this.dataOdierna.getMinutes(); if(minuti<10) minuti="0"+minuti.toString();
+                let secondi=this.dataOdierna.getSeconds(); if (secondi<10) secondi="0"+secondi.toString();
+                //-------------
+                let orario=`${giorno}/${mese}/${anno} ${ora}:${minuti}:${secondi}`;
                 this.getConversazioniByIdActive().messaggi.push({
                     testo: this.messaggioTemporaneo,
-                    data: /*orario*/'',
+                    data: orario,
                     sent: true
                 });
                 this.messaggioTemporaneo='';
-                /*secondi=this.dataOdierna.getSeconds();
-                orario=`${giorno}/${mese}/${anno} ${ora}:${minuti}:${secondi}`;*/
+                secondi=this.dataOdierna.getSeconds();
+                orario=`${giorno}/${mese}/${anno} ${ora}:${minuti}:${secondi}`;
                 setTimeout(()=>{
                     this.getConversazioniByIdActive().messaggi.push({
                         testo: 'Ok',
-                        data: /*orario*/'',
+                        data: orario,
                         sent: false
                     });
                 },1000);
