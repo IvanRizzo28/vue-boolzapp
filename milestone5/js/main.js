@@ -74,27 +74,35 @@ createApp({
     },
     methods:{
         getOrarioUltimoMessaggio(i){
-            const data=this.conversazioni[i].messaggi[this.conversazioni[i].messaggi.length-1].data;
-            const tmp=data.split(" ");
-            const data2=tmp[0].split("/");
-            if (Number(data2[2]) === Number(this.dataOdierna.getFullYear())){
-                if (Number(data2[1]) === Number(this.dataOdierna.getMonth()) + 1){
-                    if (Number(data2[0]) === Number(this.dataOdierna.getDate())) return tmp[1].substring(0,tmp[1].length-3);
+            if (this.conversazioni[i].messaggi.length > 0)
+            {
+                const data=this.conversazioni[i].messaggi[this.conversazioni[i].messaggi.length-1].data;
+                const tmp=data.split(" ");
+                const data2=tmp[0].split("/");
+                if (Number(data2[2]) === Number(this.dataOdierna.getFullYear())){
+                    if (Number(data2[1]) === Number(this.dataOdierna.getMonth()) + 1){
+                        if (Number(data2[0]) === Number(this.dataOdierna.getDate())) return tmp[1].substring(0,tmp[1].length-3);
+                    }
+                    return data2[0]+"/"+data2[1];
                 }
-                return data2[0]+"/"+data2[1];
+                return data2.toString().replaceAll(',', '/');
             }
-            return data2.toString().replaceAll(',', '/');
         },
         getConversazioni(){
             if (this.cerca.trim() !== ''){
                 const tmp= this.conversazioni.filter((element) => {
-                    let nomeIntero=this.contatti[element.idContatto].nome + " " + this.contatti[element.idContatto].cognome;
-                    nomeIntero=nomeIntero.toLowerCase();
-                    if (nomeIntero.includes(this.cerca.toLowerCase())) return element;
-                });
+                    if (element.messaggi.length > 0)
+                    {
+                        let nomeIntero=this.contatti[element.idContatto].nome + " " + this.contatti[element.idContatto].cognome;
+                        nomeIntero=nomeIntero.toLowerCase();
+                        if (nomeIntero.includes(this.cerca.toLowerCase())) return element;
+                    }
+                    });
                 return tmp;
             }
-            const tmp= this.conversazioni;
+            const tmp= this.conversazioni.filter(element => {
+                if (element.messaggi.length > 0) return element;
+            });
             return tmp;
         },
         chatAttiva(){
@@ -124,10 +132,14 @@ createApp({
             return this.contatti[this.getConversazioniByIdActive().idContatto].img;
         },
         getMessaggiContatto(){
+            if (this.getConversazioniByIdActive().messaggi.length === 0) return '';
             return this.getConversazioniByIdActive().messaggi;
         },
         getOrarioMessaggio(i){
             return this.getConversazioniByIdActive().messaggi[i].data.substring(10,this.getConversazioniByIdActive().messaggi[i].data.length-3);
+        },
+        eliminaMessaggio(i){
+            this.getConversazioniByIdActive().messaggi.splice(i,1);
         },
         inviaMessaggio(){
             if (this.messaggioTemporaneo.trim() != ''){
