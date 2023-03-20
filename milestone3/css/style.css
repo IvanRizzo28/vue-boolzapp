@@ -83,6 +83,10 @@ app
     left: 50%;
     transform: translate(-50%,-50%);
 }
+
+body{
+    font-family: 'Lato', sans-serif;
+}
 /*conversazioni*/
 aside{
     width: 35%;
