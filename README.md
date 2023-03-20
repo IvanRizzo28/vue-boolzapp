@@ -16,7 +16,15 @@ Nella parte di sinistra del sito dove ci sono le conversazioni, nella parte relt
 - Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde
 Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
 
-## Features
+# Milestone 4
+- Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+
+# Milestone 5
+- Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+- Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti (Già presente a partire dalla milestone3)
+
+# Features 1
 - Ordino la lista delle conversazioni in base alla data più recente
 
-# Nella milestone1 è compresa pure la milestone4
+# Features 2
+- Creare un bottone per aggiungere una conversazione con un contatto presente nella lista dei contatti
