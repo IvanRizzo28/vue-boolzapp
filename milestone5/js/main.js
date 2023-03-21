@@ -7,6 +7,7 @@ createApp({
         cerca: '',
         messaggioTemporaneo: '',
         idActive: -1,
+        contattiPage: false,
         idCount: 0, //count dell'id conversazioni
         contatti:[ 
             {
@@ -23,6 +24,11 @@ createApp({
                 nome: 'Giuseppe',
                 cognome: '',
                 img: `../img/avatar_3.jpg`
+            },
+            {
+                nome: 'Mario',
+                cognome: '',
+                img: `../img/avatar_4.jpg`
             }
         ],
         conversazioni: [
@@ -118,12 +124,13 @@ createApp({
             this.cerca='';
         },
         getConversazioniByIdActive(){
-            if (this.idActive > -1){
+            if (this.idActive > -1 && this.conversazioni.length>0){
                 for (let i=0;i<this.conversazioni.length;i++)
                 {
                     if (this.conversazioni[i].id === this.idActive) return this.conversazioni[i];
                 }
             }
+            return false;
         },
         getNomeCognomeContatto(){
             return this.contatti[this.getConversazioniByIdActive().idContatto].nome + " " + this.contatti[this.getConversazioniByIdActive().idContatto].cognome;
@@ -169,6 +176,45 @@ createApp({
                     });
                 },1000);
             }
+        },
+        setContattiPage(){
+            this.contattiPage=!this.contattiPage;
+        },
+        conversazioneVuota(i){
+            this.conversazioni.push({
+                id: this.idActive,
+                idContatto: i,
+                messaggi:[]
+            });
+        },
+        isChatVuota(id){
+            for (let i=0;i<this.conversazioni.length;i++){
+                if (this.conversazioni[i].idContatto === id){
+                    return false;
+                } 
+            }
+            return true;
+        },
+        getConversazioniByIdContatto(id){
+            for (let i=0;i<this.conversazioni.length;i++){
+                if (this.conversazioni[i].idContatto === id){
+                    return this.conversazioni[i].id;
+                } 
+            }
+        },
+        addConversazione(i){
+            if (this.conversazioni.length === 0){
+                this.idActive=0;
+                this.conversazioneVuota(i);
+            }
+            else if(this.isChatVuota(i)){
+                this.idActive=this.conversazioni[this.conversazioni.length-1].id + 1;
+                this.conversazioneVuota(i);
+            }
+            else{
+                this.idActive=this.getConversazioniByIdContatto(i);
+            }
+            //console.log(this.idActive);
         }
     }
   }).mount('#app')

@@ -47,6 +47,12 @@
             </div>
 
             <div class="lista-conversazioni flex flex-column">
+                <!--aggiungi conversazione-->
+                <div class="btn aggiungi" @click="setContattiPage()">
+                    <span v-if="contattiPage">x</span>
+                    <span v-else>+</span>
+                </div>
+                <!--/////////////////////-->
                 <div class="cerca flex">
                     <div>
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -65,6 +71,17 @@
                         </div>
                         <span class="orario">{{getOrarioUltimoMessaggio(index)}}</span>
                     </div>
+                    
+                    <!--lista contatti-->
+                    <div class="content-chat" id="contatti" v-show="contattiPage">
+                        <div class="flex ai-center p-2" v-for="(element,index) in contatti" @click="addConversazione(index,$event)">
+                            <img :src="element.img" :alt="element.nome" class="avatar">
+                            <div>
+                                <span class="nome">{{element.nome}} {{element.cognome}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/lista contatti-->
                 </div>
                 <!--/Lista conversazioni-->
             </div>

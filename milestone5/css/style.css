@@ -71,6 +71,10 @@ spaziatura dimensioni
 .h-100{
     height: 100%;
 }
+
+.p-2{
+    padding: 15px;
+}
 /*
 app
 */
@@ -128,6 +132,7 @@ aside header{
     background-color: #fff;
     flex-grow: 1;
     overflow-y: auto;
+    position: relative;
 }
 
 .cerca{
@@ -137,6 +142,8 @@ aside header{
 }
 .content{
     overflow-y: auto;
+    position: relative;
+
 }
 .cerca input{
     flex-grow: 1; 
@@ -165,6 +172,37 @@ aside header{
     color: #b1b1b1;
     font-size: 12px;
 }
+/*
+lista dei contatti
+*/
+#contatti{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #fff;
+}
+
+.btn{
+    background-color: #009688;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;    
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.aggiungi{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    z-index: 10;
+}
+
 /*chat*/
 main{
     flex-grow: 1;
